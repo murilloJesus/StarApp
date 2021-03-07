@@ -1,0 +1,7 @@
+{
+  "name": "star0.1",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
