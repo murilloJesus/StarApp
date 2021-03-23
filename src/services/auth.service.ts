@@ -34,7 +34,6 @@ const AuthService = {
             const response = await ApiService.customRequest(requestData);
             ApiService.setHeader();
             UserService.saveUser(signInData);
-            ApiService.mount401Interceptor();
 
             return response.data;
         } catch (error) {
