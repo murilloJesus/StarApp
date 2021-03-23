@@ -7,6 +7,7 @@ import { cep } from "./cep.store"
 import { escolaridade } from "./escolaridade.store"
 import { responsaveis } from "./responsaveis.store"
 import { documentos } from "./documentos.store"
+import { fichas } from "./fichas.store"
 
 export const store = createStore({
     state: {},
@@ -20,6 +21,7 @@ export const store = createStore({
         cep,
         escolaridade,
         responsaveis,
-        documentos
+        documentos,
+        fichas
     },
 })

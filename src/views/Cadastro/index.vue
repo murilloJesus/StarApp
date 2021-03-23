@@ -13,10 +13,12 @@
           <cadastro-aluno v-if="pages.indexOf('aluno') != -1" :page="page"></cadastro-aluno>
           <lista-responsaveis v-if="pages.indexOf('listaResponsaveis') != -1" :page="page"></lista-responsaveis>
           <documentos v-if="pages.indexOf('documentos') != -1" :page="page"></documentos>
+          <complementares v-if="pages.indexOf('complementares') != -1" :page="page"></complementares>
     </ion-content>
 
     <ion-tabs @ionTabsWillChange="beforeTabChange" @ionTabsDidChange="afterTabChange">
       <ion-tab-bar slot="bottom">
+
         <ion-tab-button @click="addPage('|aluno')" >
           <ion-icon :icon="personCircle"></ion-icon>
           <ion-label>Aluno</ion-label>
@@ -26,10 +28,17 @@
           <ion-icon :icon="list"></ion-icon>
           <ion-label>Responsáveis</ion-label>
         </ion-tab-button>
+
         <ion-tab-button @click="addPage('|documentos')">
           <ion-icon :icon="document"></ion-icon>
           <ion-label>Documentos</ion-label>
         </ion-tab-button>
+
+        <ion-tab-button @click="addPage('|complementares')">
+          <ion-icon :icon="medical"></ion-icon>
+          <ion-label>Fichas</ion-label>
+        </ion-tab-button>
+
       </ion-tab-bar>
     </ion-tabs>
   </ion-page>
@@ -40,7 +49,8 @@ import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, Io
 import cadastroAluno from './aluno.vue'
 import listaResponsaveis from './../Responsaveis/lista.vue';
 import documentos from './../Documentos/lista.vue';
-import { list, personCircle, document } from 'ionicons/icons';
+import complementares from './../Complemetares/lista.vue';
+import { list, personCircle, document, medical } from 'ionicons/icons';
 // import { useRouter } from 'vue-router';
 // import { mapActions } from 'vuex';
 
@@ -63,13 +73,15 @@ export default {
         //vue comp
         cadastroAluno,
         listaResponsaveis,
-        documentos
+        documentos,
+        complementares
     },
     setup() {
       return { 
           list,
           personCircle,
-          document
+          document,
+          medical
         }
   },
   methods: {
@@ -87,7 +99,9 @@ export default {
     nomeTab() {
       const paginas = {
         listaResponsaveis : 'Responsaveis',
-        aluno : 'Cadastro'
+        aluno : 'Cadastro',
+        documentos :  'Documentos',
+        complementares: 'Fichas Médicas'
       }
       return paginas[this.page]
     }
