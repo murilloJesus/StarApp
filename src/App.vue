@@ -68,7 +68,7 @@ export default defineComponent({
       },
       {
         title: 'Boletim',
-        url: '/folder/Favorites',
+        url: '/boletim',
         iosIcon: newspaperOutline,
         mdIcon: newspaperSharp
       },

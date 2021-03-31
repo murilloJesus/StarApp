@@ -7,6 +7,8 @@ import Mensagem from '.././views/Mensagem/index.vue'
 import verMensagem from '.././views/Mensagem/ver.vue'
 //CADASTRO
 import Cadastro from '.././views/Cadastro/index.vue'
+//BOLETIM
+import ListaBoletim from '.././views/boletim/lista.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -37,6 +39,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/mensagem/ver/:id',
     name: 'ver mensagem',
     component: verMensagem
+  },
+  {
+    path: '/boletim',
+    name: 'Lista Boletins',
+    component: ListaBoletim
   },
 
 ]

@@ -49,8 +49,13 @@ export default defineComponent({
         ...mapActions('fichas', ['loadMedica']),
         ...mapActions('fichas', ['loadComplementar']),
         async load(){
-          this.fichas.medica = await this.loadMedica();
-          this.fichas.complementar = await this.loadComplementar();
+          await this.loadMedica().then((res: any) => {
+              this.fichas.medica = res.data
+          })
+
+          await this.loadComplementar().then((res: any) => {
+              this.fichas.complementar = res.data
+          })
         },
         async initFichaMedica() {
             this.modal = await modalController
@@ -78,7 +83,6 @@ export default defineComponent({
         },
         closeModal() {
             this.modal.dismiss();
-            this.loadDocs();
         },
     },
 })

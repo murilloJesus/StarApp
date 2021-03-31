@@ -21,31 +21,34 @@
 
         <ion-item>
             <ion-label>Convenio Médico</ion-label>
-            <ion-select placeholder="Selecione" @ionChange="dados.bool_convenio_medico= $event.target.value" :value="dados.bool_convenio_medico"> 
+            <ion-toggle slot="end" @ionChange="dados.bool_convenio_medico= !(Number(dados.bool_convenio_medico))" :checked="dados.bool_convenio_medico == 1"></ion-toggle>
+
+            <!-- <ion-select placeholder="Selecione" @ionChange="dados.bool_convenio_medico= $event.target.value" :value="dados.bool_convenio_medico"> 
                 <ion-select-option value="0">Não</ion-select-option>
                 <ion-select-option value="1">Sim</ion-select-option>
-            </ion-select>
+            </ion-select> -->
         </ion-item>
+        <div v-if="Number(dados.bool_convenio_medico)">
+            <ion-item>
+                <ion-label position="floating">Qual</ion-label>
+                <ion-input @ionChange="dados.nome_convenio_medico= $event.target.value" :value="dados.nome_convenio_medico"></ion-input>
+            </ion-item>
 
-        <ion-item>
-            <ion-label position="floating">Qual</ion-label>
-            <ion-input @ionChange="dados.nome_convenio_medico= $event.target.value" :value="dados.nome_convenio_medico"></ion-input>
-        </ion-item>
+            <ion-item>
+                <ion-label position="floating">Endereço</ion-label>
+                <ion-input @ionChange="dados.endereco_convenio_medico= $event.target.value" :value="dados.endereco_convenio_medico"></ion-input>
+            </ion-item>
 
-        <ion-item>
-            <ion-label position="floating">Endereço</ion-label>
-            <ion-input @ionChange="dados.endereco_convenio_medico= $event.target.value" :value="dados.endereco_convenio_medico"></ion-input>
-        </ion-item>
+            <ion-item>
+                <ion-label position="floating">Telefone</ion-label>
+                <ion-input @ionChange="dados.telefone_convenio_medico= $event.target.value" :value="dados.telefone_convenio_medico"></ion-input>
+            </ion-item>
 
-        <ion-item>
-            <ion-label position="floating">Telefone</ion-label>
-            <ion-input @ionChange="dados.telefone_convenio_medico= $event.target.value" :value="dados.telefone_convenio_medico"></ion-input>
-        </ion-item>
-
-        <ion-item>
-            <ion-label position="floating">Nº Identificação</ion-label>
-            <ion-input @ionChange="dados.identificacao_convenio_medico= $event.target.value" :value="dados.identificacao_convenio_medico"></ion-input>
-        </ion-item>
+            <ion-item>
+                <ion-label position="floating">Nº Identificação</ion-label>
+                <ion-input @ionChange="dados.identificacao_convenio_medico= $event.target.value" :value="dados.identificacao_convenio_medico"></ion-input>
+            </ion-item>
+        </div>
 
         <ion-item-divider>
             <ion-label>
@@ -55,7 +58,7 @@
 
         <ion-item>
             <ion-label position="floating">Reside Com</ion-label>
-            <ion-select placeholder="Selecione" @ionChange="dados.reside_com= $event.target.value" :value="dados.reside_com"> 
+            <ion-select placeholder="Selecione"  @ionChange="dados.reside_com= $event.target.value" :value="dados.reside_com"> 
                 <ion-select-option value="0">Pais</ion-select-option>
                 <ion-select-option value="1">Só Pai</ion-select-option>
                 <ion-select-option value="2">Só Mãe</ion-select-option>
@@ -111,7 +114,7 @@
         <!-- </ion-item>
 
         <ion-item> -->
-            <div v-if="dados.bool_alergias_alimentares">
+            <div v-if="Number(dados.bool_alergias_alimentares)">
                 <ion-label position="floating">Quais?</ion-label>
                 <ion-input @ionChange="dados.nome_alergias_alimentares= $event.target.value" :value="dados.nome_alergias_alimentares"></ion-input>
             </div>
@@ -128,7 +131,7 @@
         <!-- </ion-item>
 
         <ion-item> -->
-            <div v-if="dados.bool_alergias_medicamentos">
+            <div v-if="Number(dados.bool_alergias_medicamentos)">
                 <ion-label position="floating">Quais?</ion-label>
                 <ion-input @ionChange="dados.nome_alergias_medicamentos= $event.target.value" :value="dados.nome_alergias_medicamentos"></ion-input>
             </div>
@@ -175,7 +178,7 @@
         <!-- </ion-item>
 
         <ion-item> -->
-            <div v-if="dados.bool_tratamento">
+            <div v-if="Number(dados.bool_tratamento)">
                 <ion-label position="floating">Quail?</ion-label>
                 <ion-input @ionChange="dados.nome_tratamentos= $event.target.value" :value="dados.nome_tratamentos"></ion-input>
             </div>
@@ -192,7 +195,7 @@
         <!-- </ion-item>
 
         <ion-item> -->
-            <div v-if="dados.bool_medicamentos">
+            <div v-if="Number(dados.bool_medicamentos)">
                 <ion-label position="floating">Quais?</ion-label>
                 <ion-input @ionChange="dados.nome_Medicamentos= $event.target.value" :value="dados.nome_Medicamentos"></ion-input>
             </div>
@@ -209,7 +212,7 @@
         <!-- </ion-item>
 
         <ion-item> -->
-            <div v-if="dados.bool_doenca_congenita">
+            <div v-if="Number(dados.bool_doenca_congenita)">
                 <ion-label position="floating">Quais?</ion-label>
                 <ion-input @ionChange="dados.nome_doenca_congenita= $event.target.value" :value="dados.nome_doenca_congenita"></ion-input>
             </div>
@@ -226,7 +229,7 @@
         <!-- </ion-item>
 
         <ion-item> -->
-            <div v-if="dados.bool_cirurgia">
+            <div v-if="Number(dados.bool_cirurgia)">
                 <ion-label position="floating">Quais?</ion-label>
                 <ion-input @ionChange="dados.nome_cirurgia_realizada= $event.target.value" :value="dados.nome_cirurgia_realizada"></ion-input>
             </div>
@@ -237,7 +240,7 @@
             <ion-toggle slot="end" @ionChange="dados.bool_desmaio_ou_convulsao= !(Number(dados.bool_desmaio_ou_convulsao))" :checked="dados.bool_desmaio_ou_convulsao == 1"></ion-toggle>
         </ion-item>
 
-        <div v-if="dados.bool_desmaio_ou_convulsao">
+        <div v-if="Number(dados.bool_desmaio_ou_convulsao)">
             <ion-item-divider>
                 <ion-label text-wrap>
                     Está em tratamento ou outras informações
@@ -292,7 +295,7 @@
             <ion-toggle slot="end" @ionChange="dados.bool_eplepsia= !(Number(dados.bool_eplepsia))" :checked="dados.bool_eplepsia == 1"></ion-toggle>
         </ion-item>
 
-        <ion-item  v-if="dados.bool_eplepsia">
+        <ion-item  v-if="Number(dados.bool_eplepsia)">
             <ion-label>Em Tratamento?</ion-label>
             <ion-toggle slot="end" @ionChange="dados.bool_tratamento_eplepsia= !(Number(dados.bool_tratamento_eplepsia))" :checked="dados.bool_tratamento_eplepsia == 1"></ion-toggle>
         </ion-item>
@@ -309,7 +312,7 @@
             <ion-toggle slot="end" @ionChange="dados.bool_hemofilia= !(Number(dados.bool_hemofilia))" :checked="dados.bool_hemofilia == 1"></ion-toggle>
         </ion-item>
 
-        <ion-item  v-if="dados.bool_hemofilia">
+        <ion-item  v-if="Number(dados.bool_hemofilia)">
             <ion-label>Em Tratamento?</ion-label>
             <ion-toggle slot="end" @ionChange="dados.bool_tratamento_hemofilia= !(Number(dados.bool_tratamento_hemofilia))" :checked="dados.bool_tratamento_hemofilia == 1"></ion-toggle>
         </ion-item>
@@ -325,7 +328,7 @@
             <ion-toggle slot="end" @ionChange="dados.bool_asmatico= !(Number(dados.bool_asmatico))" :checked="dados.bool_asmatico == 1"></ion-toggle>
         </ion-item>
 
-        <ion-item v-if="dados.bool_asmatico">
+        <ion-item v-if="Number(dados.bool_asmatico)">
             <ion-label>Em Tratamento?</ion-label>
             <ion-toggle slot="end" @ionChange="dados.bool_tratamento_asmatico= !(Number(dados.bool_tratamento_asmatico))" :checked="dados.bool_tratamento_asmatico == 1"></ion-toggle>
         </ion-item>
@@ -341,7 +344,7 @@
             <ion-toggle slot="end" @ionChange="dados.bool_diabetes= !(Number(dados.bool_diabetes))" :checked="dados.bool_diabetes == 1"></ion-toggle>
         </ion-item>
 
-        <ion-item v-if="dados.bool_diabetes">
+        <ion-item v-if="Number(dados.bool_diabetes)">
             <ion-label>Toma insulina?</ion-label>
             <ion-toggle slot="end" @ionChange="dados.bool_tratamento_diabetes= !(Number(dados.bool_tratamento_diabetes))" :checked="dados.bool_tratamento_diabetes == 1"></ion-toggle>
         </ion-item>
@@ -415,7 +418,10 @@ export default defineComponent({
   methods: {
       ...mapActions('fichas', ['saveMedica']),
       async saveDados(){
-        //  console.log(this.dados)
+
+        const dados = Object.assign({}, this.dados)
+
+        console.log(dados)
          
          const toast = await toastController
             .create({
@@ -423,7 +429,7 @@ export default defineComponent({
                 duration: 2000
             })
 
-        await this.saveMedica(this.dados).then(() => {
+        await this.saveMedica(dados).then(() => {
             toast.present();
             this.closeMe();
         });

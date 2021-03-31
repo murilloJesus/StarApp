@@ -1,7 +1,7 @@
-import { fichaService, ResponseError } from "@/services/ficha.service";
+import { BoletimService, ResponseError } from "@/services/boletim.service";
 
 const state = {
-    dados: [],
+    lista: [],
     responseData: "",
     responseErrorCode: 0,
     responseError: "",
@@ -17,16 +17,16 @@ const getters = {
     responseData: (state: { responseData: any }) => {
         return state.responseData;
     },
-    dados: (state: { dados: any }) => {
-        return state.dados;
+    lista: (state: { lista: any }) => {
+        return state.lista;
     },
 };
 
 const actions = {
-    async loadMedica(context: any) {
+    async load(context: any) {
         context.commit("dataRequest");
         try {
-            const resp = await fichaService.loadMedica(context.rootState.home.id);
+            const resp = await BoletimService.listar(context.rootState.home.id);
             context.commit("dataSuccess", resp);
             return resp;
         } catch (e) {
@@ -39,10 +39,10 @@ const actions = {
             return e.message;
         }
     },
-    async loadComplementar(context: any) {
+    async ver(context: any, id: number){
         context.commit("dataRequest");
         try {
-            const resp = await fichaService.loadComplementar(context.rootState.home.id);
+            const resp = await BoletimService.ver(id);
             context.commit("dataSuccess", resp);
             return resp;
         } catch (e) {
@@ -54,39 +54,7 @@ const actions = {
             }
             return e.message;
         }
-    },
-    async saveMedica(context: any, form: any) {
-        context.commit("dataRequest");
-        try {
-            const resp = await fichaService.saveMedica(context.rootState.home.id, form);
-            context.commit("dataSuccess", resp);
-            return resp;
-        } catch (e) {
-            if (e instanceof ResponseError) {
-                context.commit("dataError", {
-                    errorMessage: e.errorMessage,
-                    responseErrorCode: e.errorCode
-                });
-            }
-            return e.message;
-        }
-    },
-    async saveComplementar(context: any, form: any) {
-        context.commit("dataRequest");
-        try {
-            const resp = await fichaService.saveComplementar(context.rootState.home.id, form);
-            context.commit("dataSuccess", resp);
-            return resp;
-        } catch (e) {
-            if (e instanceof ResponseError) {
-                context.commit("dataError", {
-                    errorMessage: e.errorMessage,
-                    responseErrorCode: e.errorCode
-                });
-            }
-            return e.message;
-        }
-    },
+    }
 };
 
 const mutations = {
@@ -99,10 +67,10 @@ const mutations = {
     },
     dataSuccess(state: { 
         responseData: string;
-        dados: []; 
+        lista: []; 
         }, payload: any) {
         state.responseData = payload;
-        state.dados = payload.data;
+        state.lista = payload.data;
     },
     dataError(state: {
         responseError: any;
@@ -113,7 +81,7 @@ const mutations = {
     }
 }
 
-export const fichas = {
+export const boletim = {
     namespaced: true,
     state,
     getters,
