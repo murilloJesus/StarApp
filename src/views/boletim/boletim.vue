@@ -62,7 +62,10 @@ export default {
       boletim: false
     }
   },
-  props: ['id', 'closeMe'],
+  props: {
+    id: { type: Number, default: 0 },
+    closeMe: { type: Function, default: () => { return 0} },
+  },
   created() {
     this.ver(this.id).then((res) => {
         this.boletim = res.data

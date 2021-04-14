@@ -1,38 +1,33 @@
 <template>
   <ion-page>
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Login</ion-title>
-      </ion-toolbar>
-    </ion-header>
-        <ion-content :fullscreen="true">
-            <div class="background" style="background-image: url('assets/img/background001.jpg');">
-            <form @submit.prevent="handleLogin" style="height: 90%; display: flex; align-items: center; justify-content: center;">
-                <ion-card>
-                    <ion-card-content>
-                        <ion-item>
-                            <ion-label position="floating">ID Escolar</ion-label>
-                            <ion-input v-model="form.id" id=id></ion-input>
-                        </ion-item>
-                        <ion-item>
-                            <ion-label position="floating">Login</ion-label>
-                            <ion-input v-model="form.login" id=login></ion-input>
-                        </ion-item>
-                        <ion-item>
-                            <ion-label position="floating">Senha</ion-label>
-                            <ion-input type=password v-model="form.senha" id=senha></ion-input>
-                        </ion-item>
-                        <div style="padding-top: 20px">
-                            <ion-button expand=full type="submit" shape="round">
-                                Entrar
-                                <ion-icon :icon="logIn"></ion-icon>
-                            </ion-button>
-                        </div>
-                    </ion-card-content>
-                </ion-card>
-            </form>
-            </div>
-        </ion-content>
+    <ion-content :fullscreen="true">
+        <div class="background" style="background-image: url('assets/img/background001.jpg');">
+        <form @submit.prevent="handleLogin" style="height: 90%; display: flex; align-items: center; justify-content: center;">
+            <ion-card>
+                <ion-card-content>
+                    <ion-item>
+                        <ion-label position="floating">ID Escolar</ion-label>
+                        <ion-input v-model="form.id" id=id></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating">Login</ion-label>
+                        <ion-input v-model="form.login" id=login></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating">Senha</ion-label>
+                        <ion-input type=password v-model="form.senha" id=senha></ion-input>
+                    </ion-item>
+                    <div style="padding-top: 20px">
+                        <ion-button expand=full type="submit" shape="round">
+                            Entrar
+                            <ion-icon :icon="logIn"></ion-icon>
+                        </ion-button>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+        </form>
+        </div>
+    </ion-content>
   </ion-page>
 </template>
 
@@ -48,9 +43,9 @@
 }
 </style>
 
-<script lang="ts">
-import { IonPage, IonHeader, 
-         IonToolbar, IonTitle, IonContent,
+<script>
+import { IonPage,  
+         IonContent,
          IonCard, IonCardContent,
          IonItem, IonLabel, IonInput, IonIcon, alertController } from '@ionic/vue';
 
@@ -61,12 +56,12 @@ import { useRouter } from 'vue-router';
 
 export default  {
   name: 'Login',
-  components: { IonPage, IonHeader, 
-         IonToolbar, IonTitle, IonContent,
+  components: { IonPage, IonContent,
          IonCard, IonCardContent,
          IonItem, IonLabel, IonInput, IonIcon },
   setup() {
     const router = useRouter();
+
     return {
       router,
       logIn
@@ -96,7 +91,7 @@ export default  {
         this.form.login = ""
         this.form.senha = ""
         this.router.push("/home")
-      }).catch(async (err: any) => {
+      }).catch(async (err) => {
         const errorAlert = await alertController
             .create({
               header: 'Erro',

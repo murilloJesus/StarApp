@@ -13,41 +13,30 @@ class ResponseError extends Error {
     }
 }
 
-const BoletimService = {
+const DiarioClasseService = {
 
     listar: async function (id: number) {
          try {
-             return ApiService.get(`/api/boletim/lista.php?id=${id}`)
+             return ApiService.get(`/api/diario_classe/lista.php?id=${id}`)
          } catch (error) {
             throw new ResponseError(
                 error.status,
-                'Não foi possível listar os boletins'
+                'Não foi possível listar'
             );
         }
     },
 
     ver: async function (id: number) {
         try {
-            return ApiService.get(`/api/boletim/boletim.php?id=${id}`)
+            return ApiService.get(`/api/diario_classe/ver.php?id=${id}`)
         } catch (error) {
            throw new ResponseError(
                error.status,
-               'Não foi possivel carregar o boletim'
+               'Não foi possivel carregar o diario'
            );
        }
    },
 
-   resultadoFinal: async function (id: number) {
-        try {
-            return ApiService.get(`/api/boletim/resultado_final.php?id=${id}`)
-        } catch (error) {
-            throw new ResponseError(
-                error.status,
-                'Não foi possível listar os boletins'
-            );
-        }
-    },
-
 }
 
-export { BoletimService, ResponseError };
+export { DiarioClasseService, ResponseError };

@@ -420,8 +420,6 @@ export default defineComponent({
       async saveDados(){
 
         const dados = Object.assign({}, this.dados)
-
-        console.log(dados)
          
          const toast = await toastController
             .create({

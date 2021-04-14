@@ -2,18 +2,23 @@ import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
 import Home from '.././views/Home.vue'
 import Login from '.././views/Login.vue'
+import Loading from '.././views/Loading.vue'
 //MENSAGEM
 import Mensagem from '.././views/Mensagem/index.vue'
 import verMensagem from '.././views/Mensagem/ver.vue'
 //CADASTRO
 import Cadastro from '.././views/Cadastro/index.vue'
 //BOLETIM
-import ListaBoletim from '.././views/boletim/lista.vue'
+import ListaBoletim from '.././views/Boletim/lista.vue'
+//DIARIO
+import ListaDiarioClasse from '.././views/DiarioClasse/lista.vue'
+import { UserService } from '@/services/user.service';
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/login'
+    name: 'Loading',
+    component: Loading
   },
   {
     path: '/login',
@@ -44,6 +49,19 @@ const routes: Array<RouteRecordRaw> = [
     path: '/boletim',
     name: 'Lista Boletins',
     component: ListaBoletim
+  },
+  {
+    path: '/diario',
+    name: 'Diarios de Classe',
+    component: ListaDiarioClasse
+  },
+  {
+    path: '/logout',
+    name: 'Sair',
+    redirect: () => {
+        UserService.removeUser();
+        return '/login'
+    }
   },
 
 ]

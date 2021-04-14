@@ -255,9 +255,6 @@ export default defineComponent({
           this.loadEstados().then((res: any) => {
               this.estados = res.data;
           });
-      },
-      close() {
-        this.$emit('close', { foo: 'bar' })
       }
   }  
 })

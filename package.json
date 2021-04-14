@@ -1,5 +1,5 @@
 {
-  "name": "star0.1",
+  "name": "StarApp",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -7,7 +7,8 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "resources": "cordova-res android && node scripts/resources.js"
   },
   "dependencies": {
     "@angular/core": "^11.2.3",

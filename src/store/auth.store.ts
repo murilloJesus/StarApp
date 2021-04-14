@@ -39,6 +39,10 @@ const actions = {
         });
     },
 
+    async isSigned(){
+        return AuthService.isSigned();
+    },
+
     setAuthenticatingStatus(context: any, status: any) {
         context.commit("setAuthenticatingStatus", status);
     },

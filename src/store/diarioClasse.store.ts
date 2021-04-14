@@ -1,4 +1,4 @@
-import { BoletimService, ResponseError } from "@/services/boletim.service";
+import { DiarioClasseService, ResponseError } from "@/services/diarioClasse.service";
 
 const state = {
     lista: [],
@@ -26,7 +26,7 @@ const actions = {
     async load(context: any) {
         context.commit("dataRequest");
         try {
-            const resp = await BoletimService.listar(context.rootState.home.id);
+            const resp = await DiarioClasseService.listar(context.rootState.home.id);
             context.commit("dataSuccess", resp);
             return resp;
         } catch (e) {
@@ -42,23 +42,7 @@ const actions = {
     async ver(context: any, id: number){
         context.commit("dataRequest");
         try {
-            const resp = await BoletimService.ver(id);
-            context.commit("dataSuccess", resp);
-            return resp;
-        } catch (e) {
-            if (e instanceof ResponseError) {
-                context.commit("dataError", {
-                    errorMessage: e.errorMessage,
-                    responseErrorCode: e.errorCode
-                });
-            }
-            return e.message;
-        }
-    },
-    async resultadoFinal(context: any, id: number){
-        context.commit("dataRequest");
-        try {
-            const resp = await BoletimService.resultadoFinal(id);
+            const resp = await DiarioClasseService.ver(id);
             context.commit("dataSuccess", resp);
             return resp;
         } catch (e) {
@@ -97,7 +81,7 @@ const mutations = {
     }
 }
 
-export const boletim = {
+export const diarioClasse = {
     namespaced: true,
     state,
     getters,

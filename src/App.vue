@@ -26,7 +26,7 @@
 import { IonApp, IonContent, IonIcon, IonItem, IonLabel, IonList, IonListHeader, IonMenu, IonMenuToggle, IonNote, IonRouterOutlet, IonSplitPane } from '@ionic/vue';
 import { defineComponent, ref } from 'vue';
 import { useRoute } from 'vue-router';
-import { homeOutline, homeSharp, bookOutline, bookSharp, bookmarkOutline, bookmarkSharp, newspaperOutline, newspaperSharp, mailOutline, mailSharp, personOutline, personSharp, trashOutline, trashSharp, warningOutline, warningSharp } from 'ionicons/icons';
+import { logOut, logOutOutline, homeOutline, homeSharp, bookOutline, bookSharp, bookmarkOutline, bookmarkSharp, newspaperOutline, newspaperSharp, mailOutline, mailSharp, personOutline, personSharp, trashOutline, trashSharp, warningOutline, warningSharp } from 'ionicons/icons';
 import { mapGetters } from 'vuex';
 
 export default defineComponent({
@@ -74,10 +74,16 @@ export default defineComponent({
       },
       {
         title: 'Diario de Classe',
-        url: '/folder/Archived',
+        url: '/diario',
         iosIcon: bookOutline,
         mdIcon: bookSharp
       },
+      {
+        title: 'Sair',
+        url: '/logout',
+        iosIcon: logOutOutline,
+        mdIcon: logOut
+      }
     ];
     
     const path = window.location.pathname.split('folder/')[1];

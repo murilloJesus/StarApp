@@ -41,6 +41,24 @@ const AuthService = {
         }
     }, 
 
+    isSigned(){
+        const user = UserService.getUser()
+
+        if(user.id){
+            ApiService.setHeader();
+            UserService.saveUser({
+                id: user.id,
+                login: user.login,
+                senha: user.senha
+            });
+
+            return true
+        }
+
+        return false
+        
+    },
+
     catchError: function(error: any) {
         let status;
         let description;

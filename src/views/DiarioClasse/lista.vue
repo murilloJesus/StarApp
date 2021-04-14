@@ -11,12 +11,11 @@
     
     <ion-content :fullscreen="true">
       <ion-list v-if="lista">
-            <ion-item v-for="(item, index) in lista" :key="index" @click="openBoletim(item.id)">
+            <ion-item v-for="(item, index) in lista" :key="index" @click="openDiario(item.id)">
                 <ion-label>
-                    <h2>
-                      {{item.nome}}
-                    </h2>
-                    <p>{{item.ano_letino}}</p>
+                    <p>{{item.nome_turmas}}</p>
+                    <small>{{item.nome_disc}}</small><br>
+                    <small>{{item.dia_semana}}</small>
                 </ion-label>
             </ion-item>
         </ion-list>
@@ -30,7 +29,7 @@
 <script lang="ts">
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, modalController  } from '@ionic/vue';
 import  skeletonText  from './../common/skeletonText.vue'
-import  boletim from './boletim.vue'
+import  diario from './diario.vue'
 
 import { defineComponent } from 'vue';
 import { mapActions } from 'vuex';
@@ -59,11 +58,11 @@ export default defineComponent({
         })        
     },
     methods: {
-      ...mapActions('boletim', ['load']),
-      async openBoletim(id: any) {
+      ...mapActions('diarioClasse', ['load']),
+      async openDiario(id: any) {
             this.modal = await modalController
                 .create({
-                component: boletim,
+                component: diario,
                 cssClass: 'my-custom-class',
                 componentProps: {
                         id: id,
