@@ -1,26 +1,23 @@
 <template>
-    <ion-list  @click="openBoletim(boletim.id)">
-      <ion-card >
+      <ion-card @click="openBoletim(boletim.id)" >
         <ion-card-header>
-          <ion-card-title>Boletim</ion-card-title>
-        <ion-card-subtitle>{{boletim.turma}}</ion-card-subtitle>
+          <ion-card-title color="palete-secundary">Boletim</ion-card-title>
+        <ion-card-subtitle color="palete-primary">{{boletim.turma}}</ion-card-subtitle>
         </ion-card-header>
 
         <ion-card-content>
           <ion-grid fixed>
             <ion-row v-for="(item, index) in boletim.materias" :key="index">
-              <ion-col size="8">{{index}}</ion-col>
-              <ion-col size="4" v-html="item.media_final"></ion-col>
+              <ion-col size="8" >{{index}}</ion-col>
+              <ion-col size="4" color="palete-secondary" v-html="item.media_final"></ion-col>
             </ion-row>
           </ion-grid>
         </ion-card-content>
       </ion-card>
-    </ion-list>
 </template>
 <script>
 
 import {
-    IonList,
     IonGrid,
     IonRow,
     IonCol,
@@ -34,7 +31,6 @@ import  boletim from './boletim.vue'
 
 export default {
     components: {
-        IonList,
         IonGrid,
         IonRow,
         IonCol       

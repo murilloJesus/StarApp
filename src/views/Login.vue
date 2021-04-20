@@ -18,7 +18,7 @@
                         <ion-input type=password v-model="form.senha" id=senha></ion-input>
                     </ion-item>
                     <div style="padding-top: 20px">
-                        <ion-button expand=full type="submit" shape="round">
+                        <ion-button expand=full type="submit" color="palete-secundary" shape="round">
                             Entrar
                             <ion-icon :icon="logIn"></ion-icon>
                         </ion-button>

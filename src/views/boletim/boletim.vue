@@ -1,12 +1,12 @@
 <template>
     <ion-header>
-      <ion-toolbar>
-        <ion-title slot="start">
+      <ion-toolbar color="palete-primary">
+        <ion-title slot="start" color="palete-white">
           <h5>
             Boletim
           </h5>
           </ion-title>
-        <ion-icon @click="closeMe" color="primary" slot="end" size="large" name="close" />
+        <ion-icon @click="closeMe" color="palete-secundary" slot="end" size="large" name="close" />
       </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">

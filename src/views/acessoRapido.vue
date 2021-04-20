@@ -2,36 +2,36 @@
     <ion-grid fixed>
         <ion-row>
         <ion-col size="6">
-            <ion-card style="height: 100px" @click="router.push('/mensagem')">
+            <ion-card color="palete-primary"  @click="router.push('/mensagem')">
             <ion-card-content text-center>
-                <ion-icon size="large" :icon="mailSharp"></ion-icon>
-                <h3>Mensagem</h3>
+                <ion-icon color="palete-secundary" size="large" :icon="mailSharp"></ion-icon>
+                <h3 >Mensagem</h3>
             </ion-card-content>
             </ion-card>
         </ion-col>
         <ion-col size="6">
-            <ion-card style="height: 100px" @click="router.push('/cadastro')">
+            <ion-card color="palete-primary"  @click="router.push('/cadastro')">
             <ion-card-content text-center>
-                <ion-icon size="large" :icon="personSharp"></ion-icon>
-                <h3>Cadastro</h3>
+                <ion-icon color="palete-secundary" size="large" :icon="personSharp"></ion-icon>
+                <h3 >Cadastro</h3>
             </ion-card-content>
             </ion-card>
         </ion-col>
         </ion-row>
         <ion-row>
         <ion-col size="6">
-            <ion-card style="height: 100px" @click="router.push('/boletim')">
+            <ion-card color="palete-primary"  @click="router.push('/boletim')">
             <ion-card-content text-center>
-                <ion-icon size="large" :icon="newspaperSharp"></ion-icon>
-                <h3>Boletim</h3>
+                <ion-icon color="palete-secundary" size="large" :icon="newspaperSharp"></ion-icon>
+                <h3 >Boletim</h3>
             </ion-card-content>
             </ion-card>
         </ion-col>
         <ion-col size="6">
-            <ion-card style="height: 100px" @click="router.push('/diario')">
+            <ion-card color="palete-primary"  @click="router.push('/diario')">
             <ion-card-content text-center>
-                <ion-icon size="large" :icon="bookSharp"></ion-icon>
-                <h3>Diario de Classe</h3>
+                <ion-icon color="palete-secundary" size="large" :icon="bookSharp"></ion-icon>
+                <h3 >Diario de Classe</h3>
             </ion-card-content>
             </ion-card>
         </ion-col>
@@ -71,6 +71,19 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+  ion-card{
+    border: 1px solid var(--ion-color-palete-secundary);
+    height: 120px; 
+    width: 120px;
+    margin: auto;
+  }
 
+  ion-grid {
+    height: 480px;
+  }
+
+  h3 {
+    color: var(--ion-color-palete-white);
+  }
 </style>

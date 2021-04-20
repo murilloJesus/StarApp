@@ -1,47 +1,37 @@
 <template>
   <ion-page>
     <ion-header :translucent="true">
-      <ion-toolbar>
+      <ion-toolbar color="palete-primary">
         <ion-buttons slot="start">
-          <ion-button @click="back()" color="primary">
+          <ion-button @click="back()" color="palete-secundary">
             <ion-icon :icon="arrowBack"></ion-icon>
           </ion-button>
         </ion-buttons>
-        <ion-title> Ver Mensagem </ion-title>
+        <ion-title color="palete-white"> {{messages.nome}}</ion-title>
       </ion-toolbar>
     </ion-header>
     
     <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Mensagens</ion-title>
-        </ion-toolbar>
-      </ion-header>
-      <ion-item>
-            <ion-label>
-                <p>Enviado por: {{msg.nome}}</p>
-                <h4>Titulo: {{msg.titulo}}</h4>
-                <small>Data:{{msg.dia_semana}}</small>
-            </ion-label>
-      </ion-item>
-      <ion-item>
-        <div v-html="msg.texto">
-        </div>
-      </ion-item>
-      <ion-item v-if="!msg.respondido">
-         <ion-label position="floating"> Responder </ion-label>
-        <ion-textarea placeholder="Responder... " v-model="texto"></ion-textarea>
-      </ion-item>
-      <ion-button expand="full" @click="enviarResposta" v-if="!msg.respondido">Enviar</ion-button>
+      <ion-list>
+        <texto :texto="txt.texto" v-for="(txt, index) in messages.texto" :key=index />
+        <div style="height: 120px"></div>
+      </ion-list>
+      <div class="responder">
+        <ion-item>
+          <ion-textarea placeholder="Responder... " v-model="texto"></ion-textarea>
+        </ion-item>
+        <ion-button expand="full" @click="enviarResposta" color="palete-primary">Enviar</ion-button>
+      </div>
     </ion-content>
   </ion-page>
 </template>
 
-<script lang=ts>
-import { IonButtons, IonContent, IonHeader, IonIcon, IonPage, IonTitle, IonToolbar, IonLabel, IonItem, IonTextarea, IonButton, alertController } from '@ionic/vue';
+<script >
+import { IonButtons, IonContent, IonHeader, IonIcon, IonPage, IonTitle, IonToolbar, IonItem, IonTextarea, IonButton, alertController } from '@ionic/vue';
 import { useRouter } from 'vue-router';
-import { mapGetters, mapActions } from 'vuex';
+import { mapActions } from 'vuex';
 import { arrowBack } from 'ionicons/icons';
+import texto from './texto'
 
 // import { store } from '@/store';
 
@@ -54,7 +44,9 @@ export default {
   },
   setup() {
     const router = useRouter();
+    const messages = []
     return {
+      messages,
       router,
       arrowBack
     };
@@ -63,34 +55,33 @@ export default {
     IonButtons,
     IonContent,
     IonHeader,
-    // IonMenuButton,
     IonIcon,
     IonPage,
     IonTitle,
     IonToolbar,
-    IonLabel,
     IonItem,
     IonTextarea,
-    IonButton
+    IonButton,
+    texto
   },
-  computed: {
-    ...mapGetters("mensagem", ["lista"]),
-    msg() {
-        return this.lista[Number (this.$route.params.id)]
-    }
+  async created(){
+    await this.ver(this.$route.params.id).then( (res) => {
+        this.messages = res.data
+      } )
   },
   methods: {
     ...mapActions("mensagem", ["responder"]),
+    ...mapActions("mensagem", ["ver"]),
     async enviarResposta(){
       const form = {
-        id: this.msg.id,
+        id: this.messages.texto[this.messages.texto.length-1].id,
         texto: this.texto,
-        txtoriginal: this.msg.texto
+        txtoriginal: this.messages.texto[this.messages.texto.length-1].texto
       }
       
       await this.responder(form).then(() => {
-        this.router.push('/mensagem')
-      }).catch(async (err: any) => {
+        this.router.push(`/mensagem`)
+      }).catch(async (err) => {
         const errorAlert = await alertController
             .create({
               header: 'Erro',
@@ -107,3 +98,12 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.responder {
+    background-color: white;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+}
+</style>

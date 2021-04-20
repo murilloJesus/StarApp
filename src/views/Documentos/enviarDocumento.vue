@@ -1,12 +1,12 @@
 <template>
         <ion-header>
-            <ion-toolbar>
-                <ion-title slot="start">
+            <ion-toolbar color="palete-primary">
+                <ion-title slot="start" color="palete-white">
                 <h5>
                     Enviar Documento
                 </h5>
                 </ion-title>
-                <ion-icon @click="closeMe" color="primary" slot="end" size="large" name="close" />
+                <ion-icon @click="closeMe" slot="end" size="large" name="close" color="palete-secundary" />
             </ion-toolbar>
         </ion-header>
         <ion-content class="ion-padding">   
@@ -31,7 +31,7 @@
 
                 <ion-item>
                 </ion-item>
-                <ion-button v-on:click="enviar()" slot="end" expand="full" fill="outline">
+                <ion-button v-on:click="enviar()" slot="end" expand="full" fill="outline" color="palete-primary">
                     Enviar
                 </ion-button>
             </ion-list>
@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import { alertController } from '@ionic/vue';
+import { alertController, loadingController } from '@ionic/vue';
 import { defineComponent, ref } from 'vue';
 import { mapActions } from 'vuex';
 
@@ -78,7 +78,19 @@ export default defineComponent({
                 imagem :  this.based64
             }
 
+             const loading = await loadingController
+                    .create({
+                        spinner: 'dots',
+                        message: 'Aguarde. Enviando...',
+                        cssClass: 'ion-color-palete-primary',
+                        showBackdrop: true,
+                        
+                    });
+
+                await loading.present();
+
             this.save(form).then(() => {
+                loading.dismiss()
                 this.closeMe();
             })
         }

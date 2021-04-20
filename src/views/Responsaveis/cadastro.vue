@@ -1,12 +1,12 @@
 <template>
   <ion-header>
-      <ion-toolbar>
-        <ion-title slot="start">
+      <ion-toolbar color="palete-primary">
+        <ion-title slot="start" color="palete-white">
           <h5>
             Cadastro Responsavel
           </h5>
           </ion-title>
-        <ion-icon @click="closeMe" color="primary" slot="end" size="large" name="close" />
+        <ion-icon @click="closeMe" color="palete-secundary" slot="end" size="large" name="close" />
       </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
@@ -171,7 +171,7 @@
           <ion-textarea @ionChange="dados.txtcurto= $event.target.value" :value="dados.txtcurto"></ion-textarea>
         </ion-item>
 
-        <ion-button @click="saveDados()" expand="full" fill="outline">Salvar</ion-button>
+        <ion-button @click="saveDados()" expand="full" fill="outline" color="palete-primary">Salvar</ion-button>
 
     </ion-list>
   </ion-content>
@@ -259,3 +259,9 @@ export default defineComponent({
   }  
 })
 </script>
+
+<style scoped>
+ion-button {
+    margin-bottom: 10px;
+}
+</style>

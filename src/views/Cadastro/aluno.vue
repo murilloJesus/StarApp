@@ -154,7 +154,7 @@
             <p>{{parseFloat(dados.desconto_mensalidade/100).toFixed(2)}}</p>
         </ion-item>
 
-        <ion-button @click="saveDados()" expand="full" fill="outline">Salvar</ion-button>
+        <ion-button @click="saveDados()" expand="full" fill="outline" color="palete-secundary">Salvar</ion-button>
 
     </ion-list>
 </template>
@@ -199,8 +199,9 @@ export default defineComponent({
 
       const loading = await loadingController
         .create({
-          cssClass: 'my-custom-class',
+          cssClass: 'ion-color-palete-primary',
           message: 'Aguarde...',
+          spinner: 'dots'
         })
 
         await loading.present()
@@ -258,8 +259,9 @@ export default defineComponent({
 })
 </script>
 
-<style>
+<style scoped>
     ion-button {
         margin-bottom: 50px;
     }
+    
 </style>

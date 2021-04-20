@@ -1,13 +1,14 @@
 <template>
   <ion-page>
-    <ion-header :translucent="true">
-      <ion-toolbar>
+    <ion-header :translucent="true" >
+      <ion-toolbar color="palete-primary">
         <ion-buttons slot="start">
-          <ion-menu-button color="primary"></ion-menu-button>
+          <ion-menu-button color="palete-secundary"></ion-menu-button>
         </ion-buttons>
-        <ion-title> {{nomeTab}} </ion-title>
+        <ion-title color="palete-white">{{ nomeTab }}</ion-title>
       </ion-toolbar>
     </ion-header>
+
     
     <ion-content :fullscreen="true">
           <cadastro-aluno v-if="pages.indexOf('aluno') != -1" :page="page"></cadastro-aluno>
@@ -16,8 +17,8 @@
           <complementares v-if="pages.indexOf('complementares') != -1" :page="page"></complementares>
     </ion-content>
 
-    <ion-tabs @ionTabsWillChange="beforeTabChange" @ionTabsDidChange="afterTabChange">
-      <ion-tab-bar slot="bottom">
+    <ion-tabs @ionTabsWillChange="beforeTabChange"  @ionTabsDidChange="afterTabChange">
+      <ion-tab-bar slot="bottom" color="palete-primary">
 
         <ion-tab-button @click="addPage('|aluno')" >
           <ion-icon :icon="personCircle"></ion-icon>

@@ -1,13 +1,14 @@
 <template>
   <ion-page>
-    <ion-header :translucent="true">
-      <ion-toolbar>
+    <ion-header :translucent="true" >
+      <ion-toolbar color="palete-primary">
         <ion-buttons slot="start">
-          <ion-menu-button color="primary"></ion-menu-button>
+          <ion-menu-button color="palete-secundary"></ion-menu-button>
         </ion-buttons>
-        <ion-title> Mensagens </ion-title>
+        <ion-title color="palete-white"> Mensagens </ion-title>
       </ion-toolbar>
     </ion-header>
+
     
     <ion-content :fullscreen="true">
       <ion-header collapse="condense">
@@ -16,9 +17,9 @@
         </ion-toolbar>
       </ion-header>
         <ion-list v-if="lista">
-            <ion-item @click="presentActionSheet(index)" v-for="(item, index) in lista" :key=index>
-                <ion-label>
-                    <p>{{item.nome}}</p>
+            <ion-item @click="presentActionSheet(item.id)" v-for="(item, index) in lista" :key=index>
+                <ion-label color="palete-secundary">
+                    <p >{{item.nome}}</p>
                     <h4>{{item.titulo}}</h4>
                     <small>{{item.dia_semana}}</small>
                 </ion-label>
@@ -32,8 +33,7 @@
 </template>
 
 <script lang="ts">
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, actionSheetController  } from '@ionic/vue';
-import { close, eye } from 'ionicons/icons';
+import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar  } from '@ionic/vue';
 import { useRouter } from 'vue-router';
 import { mapActions } from 'vuex';
 import  skeletonText  from './../common/skeletonText.vue'
@@ -72,28 +72,7 @@ export default {
       this.loadMensagem();
     },
     async presentActionSheet(index: number) {
-      const actionSheet = await actionSheetController
-        .create({
-          header: 'Ações',
-          buttons: [
-            {
-              text: 'Ver',
-              icon: eye,
-              handler: () => {
-                this.router.push(`/mensagem/ver/${index}`);
-              },
-            },
-            {
-              text: 'Cancelar',
-              icon: close,
-              role: 'cancel',
-              handler: () => {
-                console.log('Cancel clicked')
-              },
-            },
-          ],
-        });
-      return actionSheet.present();
+     this.router.push(`/mensagem/ver/${index}`);
     }
   }
 }

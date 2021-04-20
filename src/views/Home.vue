@@ -1,15 +1,15 @@
 <template>
   <ion-page>
-    <ion-header :translucent="true">
-      <ion-toolbar>
+    <ion-header :translucent="true" >
+      <ion-toolbar color="palete-primary">
         <ion-buttons slot="start">
-          <ion-menu-button color="primary"></ion-menu-button>
+          <ion-menu-button color="palete-secundary"></ion-menu-button>
         </ion-buttons>
         <ion-title>{{ $route.params.id }}</ion-title>
       </ion-toolbar>
     </ion-header>
 
-    <ion-content :scroll-events="true">
+    <ion-content fullscreen="true">
        <ion-slides pager="true" :options="slideOpts">
         <ion-slide>
           <acesso-rapido></acesso-rapido>
@@ -84,7 +84,7 @@
   }
 </script>
 
-<style scoped>
+<style>
   #container {
     text-align: center;
     position: absolute;
@@ -109,4 +109,13 @@
   #container a {
     text-decoration: none;
   }
+
+  .swiper-pagination-bullet {
+    background: #536d3e;
+  }
+
+  .swiper-pagination {
+      position: fixed;
+  }
+
 </style>

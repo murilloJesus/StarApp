@@ -1,14 +1,14 @@
 <template>
     <ion-list v-if=" page === 'documentos' && lista ">
         <ion-item @click="presentActionSheet(index)" v-for="(item, index) in lista" :key=index>
-            <ion-label>
+            <ion-label >
                 <a target="_blank" :href="`http://starescola.com.br/escola/web/fotos/${item.foto}`">{{item.nome}}</a>
             </ion-label>
         </ion-item>
     </ion-list>
     <skeleton-text v-if="!lista"></skeleton-text>
     <ion-fab v-if=" page === 'documentos' && lista " vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button @click="fotografar()">
+        <ion-fab-button color="palete-secundary" @click="fotografar()">
         <ion-icon :icon="add"></ion-icon>
         </ion-fab-button>
     </ion-fab>
@@ -83,5 +83,12 @@ export default defineComponent({
 <style>
 .my-custom-class {
   --width: 50000px;
+}
+</style>
+
+<style scoped>
+a {
+    background-color: transparent;
+    color: var(--ion-color-palete-succes);
 }
 </style>

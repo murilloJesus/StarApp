@@ -28,7 +28,7 @@ const MensagensService = {
 
     ver: async function (id: number) {
         try {
-            return ApiService.get(`/api/mensagem/ver.php?id=${id}`)
+            return ApiService.get(`/api/mensagem/visualizar.php?id=${id}`)
         } catch (error) {
            throw new ResponseError(
                error.status,

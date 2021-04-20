@@ -39,6 +39,22 @@ const actions = {
             return e.message;
         }
     },
+    async ver(context: any, id: number) {
+        context.commit("dataRequest");
+        try {
+            const resp = await MensagensService.ver(id);
+            context.commit("dataSuccess", resp);
+            return resp;
+        } catch (e) {
+            if (e instanceof ResponseError) {
+                context.commit("dataError", {
+                    errorMessage: e.errorMessage,
+                    responseErrorCode: e.errorCode
+                });
+            }
+            return e.message;
+        }
+    },
     async responder(context: any, form: { id: number; texto: string}){
         context.commit("dataRequest");
         try {

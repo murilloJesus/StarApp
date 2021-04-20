@@ -1,11 +1,11 @@
 <template>
   <ion-page>
-    <ion-header :translucent="true">
-      <ion-toolbar>
+    <ion-header :translucent="true" >
+      <ion-toolbar color="palete-primary">
         <ion-buttons slot="start">
-          <ion-menu-button color="primary"></ion-menu-button>
+          <ion-menu-button color="palete-secundary"></ion-menu-button>
         </ion-buttons>
-        <ion-title> {{nomeTab}} </ion-title>
+        <ion-title color="palete-white"> Diario de Classe </ion-title>
       </ion-toolbar>
     </ion-header>
     

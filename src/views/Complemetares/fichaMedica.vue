@@ -1,16 +1,16 @@
 <template>
   <ion-header>
-      <ion-toolbar>
-        <ion-title slot="start">
+      <ion-toolbar color="palete-primary">
+        <ion-title slot="start" color="palete-white">
           <h5>
             Ficha Medica
           </h5>
           </ion-title>
-        <ion-icon @click="closeMe" color="primary" slot="end" size="large" name="close" />
+        <ion-icon @click="closeMe" slot="end" size="large" name="close" color="palete-secundary" />
       </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
-    <ion-list>
+    <ion-list color="palete-secundary">
         <!-- FOTO AQUI -->
 
         <ion-item-divider>
@@ -21,7 +21,7 @@
 
         <ion-item>
             <ion-label>Convenio Médico</ion-label>
-            <ion-toggle slot="end" @ionChange="dados.bool_convenio_medico= !(Number(dados.bool_convenio_medico))" :checked="dados.bool_convenio_medico == 1"></ion-toggle>
+            <ion-toggle color="palete-secundary" slot="end" @ionChange="dados.bool_convenio_medico= !(Number(dados.bool_convenio_medico))" :checked="dados.bool_convenio_medico == 1"></ion-toggle>
 
             <!-- <ion-select placeholder="Selecione" @ionChange="dados.bool_convenio_medico= $event.target.value" :value="dados.bool_convenio_medico"> 
                 <ion-select-option value="0">Não</ion-select-option>
@@ -105,7 +105,7 @@
 
         <ion-item>
             <ion-label >Alergias a Alimentos</ion-label>
-            <ion-toggle slot="end" @ionChange="dados.bool_alergias_alimentares= !(Number(dados.bool_alergias_alimentares))" :checked="dados.bool_alergias_alimentares == 1"></ion-toggle>
+            <ion-toggle color="palete-secundary" slot="end" @ionChange="dados.bool_alergias_alimentares= !(Number(dados.bool_alergias_alimentares))" :checked="dados.bool_alergias_alimentares == 1"></ion-toggle>
 
             <!-- <ion-select placeholder="Selecione" @ionChange="dados.bool_alergias_medicamentos= $event.target.value" :value="dados.bool_alergias_medicamentos"> 
                 <ion-select-option value="0">Não</ion-select-option>
@@ -122,7 +122,7 @@
 
         <ion-item>
             <ion-label >Alergias a Medicamentos</ion-label>
-            <ion-toggle slot="end" @ionChange="dados.bool_alergias_medicamentos= !(Number(dados.bool_alergias_medicamentos))" :checked="dados.bool_alergias_medicamentos == 1"></ion-toggle>
+            <ion-toggle color="palete-secundary" slot="end" @ionChange="dados.bool_alergias_medicamentos= !(Number(dados.bool_alergias_medicamentos))" :checked="dados.bool_alergias_medicamentos == 1"></ion-toggle>
 
             <!-- <ion-select placeholder="Selecione" @ionChange="dados.bool_alergias_medicamentos= $event.target.value" :value="dados.bool_alergias_medicamentos"> 
                 <ion-select-option value="0">Não</ion-select-option>
@@ -169,7 +169,7 @@
 
         <ion-item>
             <ion-label text-wrap> Em Atual Tratamento?</ion-label>
-            <ion-toggle slot="end" @ionChange="dados.bool_tratamentos= !(Number(dados.bool_tratamentos))" :checked="dados.bool_tratamentos == 1"></ion-toggle>
+            <ion-toggle color="palete-secundary" slot="end" @ionChange="dados.bool_tratamentos= !(Number(dados.bool_tratamentos))" :checked="dados.bool_tratamentos == 1"></ion-toggle>
 
             <!-- <ion-select placeholder="Selecione" @ionChange="dados.bool_tratamentos= $event.target.value" :value="dados.bool_tratamentos"> 
                 <ion-select-option value="0">Não</ion-select-option>
@@ -186,7 +186,7 @@
 
         <ion-item>
             <ion-label text-wrap>Ingere Medicamento?</ion-label>
-            <ion-toggle slot="end" @ionChange="dados.bool_medicamentos= !(Number(dados.bool_medicamentos))" :checked="dados.bool_medicamentos == 1"></ion-toggle>
+            <ion-toggle color="palete-secundary" slot="end" @ionChange="dados.bool_medicamentos= !(Number(dados.bool_medicamentos))" :checked="dados.bool_medicamentos == 1"></ion-toggle>
 
             <!-- <ion-select placeholder="Selecione" @ionChange="dados.bool_medicamentos= $event.target.value" :value="dados.bool_medicamentos"> 
                 <ion-select-option value="0">Não</ion-select-option>
@@ -203,7 +203,7 @@
 
         <ion-item>
             <ion-label text-wrap> Possui doença Congênita?</ion-label>
-            <ion-toggle slot="end" @ionChange="dados.bool_doenca_congenita= !(Number(dados.bool_doenca_congenita))" :checked="dados.bool_doenca_congenita == 1"></ion-toggle>
+            <ion-toggle color="palete-secundary" slot="end" @ionChange="dados.bool_doenca_congenita= !(Number(dados.bool_doenca_congenita))" :checked="dados.bool_doenca_congenita == 1"></ion-toggle>
 
             <!-- <ion-select placeholder="Selecione" @ionChange="dados.bool_doenca_congenita= $event.target.value" :value="dados.bool_doenca_congenita"> 
                 <ion-select-option value="0">Não</ion-select-option>
@@ -220,7 +220,7 @@
 
         <ion-item>
             <ion-label text-wrap>Já submeteu a alguma cirurgia?</ion-label>
-            <ion-toggle slot="end" @ionChange="dados.bool_cirurgia= !(Number(dados.bool_cirurgia))" :checked="dados.bool_cirurgia == 1"></ion-toggle>
+            <ion-toggle color="palete-secundary" slot="end" @ionChange="dados.bool_cirurgia= !(Number(dados.bool_cirurgia))" :checked="dados.bool_cirurgia == 1"></ion-toggle>
 
             <!-- <ion-select placeholder="Selecione" @ionChange="dados.bool_cirurgia= $event.target.value" :value="dados.bool_cirurgia"> 
                 <ion-select-option value="0">Não</ion-select-option>
@@ -237,7 +237,7 @@
 
         <ion-item>
             <ion-label text-wrap>Tem desmaio ou convulsão?</ion-label>
-            <ion-toggle slot="end" @ionChange="dados.bool_desmaio_ou_convulsao= !(Number(dados.bool_desmaio_ou_convulsao))" :checked="dados.bool_desmaio_ou_convulsao == 1"></ion-toggle>
+            <ion-toggle color="palete-secundary" slot="end" @ionChange="dados.bool_desmaio_ou_convulsao= !(Number(dados.bool_desmaio_ou_convulsao))" :checked="dados.bool_desmaio_ou_convulsao == 1"></ion-toggle>
         </ion-item>
 
         <div v-if="Number(dados.bool_desmaio_ou_convulsao)">
@@ -254,12 +254,12 @@
 
         <ion-item>
             <ion-label>Possui Hipertensão?</ion-label>
-            <ion-toggle slot="end" @ionChange="dados.bool_hipertensao= !(Number(dados.bool_hipertensao))" :checked="dados.bool_hipertensao == 1"></ion-toggle>
+            <ion-toggle color="palete-secundary" slot="end" @ionChange="dados.bool_hipertensao= !(Number(dados.bool_hipertensao))" :checked="dados.bool_hipertensao == 1"></ion-toggle>
         </ion-item>
 
         <ion-item>
             <ion-label>Possui Refluxo?</ion-label>
-            <ion-toggle slot="end" @ionChange="dados.bool_refluxo= !(Number(dados.bool_refluxo))" :checked="dados.bool_refluxo == 1"></ion-toggle>
+            <ion-toggle color="palete-secundary" slot="end" @ionChange="dados.bool_refluxo= !(Number(dados.bool_refluxo))" :checked="dados.bool_refluxo == 1"></ion-toggle>
         </ion-item>
 
 
@@ -281,7 +281,7 @@
 
         <ion-item>
             <ion-label>Possui?</ion-label>
-            <ion-toggle slot="end" @ionChange="dados.bool_problema_coracao= !(Number(dados.bool_problema_coracao))" :checked="dados.bool_problema_coracao == 1"></ion-toggle>
+            <ion-toggle color="palete-secundary" slot="end" @ionChange="dados.bool_problema_coracao= !(Number(dados.bool_problema_coracao))" :checked="dados.bool_problema_coracao == 1"></ion-toggle>
         </ion-item>
 
         <ion-item-divider>
@@ -292,12 +292,12 @@
 
         <ion-item>
             <ion-label>Possui?</ion-label>
-            <ion-toggle slot="end" @ionChange="dados.bool_eplepsia= !(Number(dados.bool_eplepsia))" :checked="dados.bool_eplepsia == 1"></ion-toggle>
+            <ion-toggle color="palete-secundary" slot="end" @ionChange="dados.bool_eplepsia= !(Number(dados.bool_eplepsia))" :checked="dados.bool_eplepsia == 1"></ion-toggle>
         </ion-item>
 
         <ion-item  v-if="Number(dados.bool_eplepsia)">
             <ion-label>Em Tratamento?</ion-label>
-            <ion-toggle slot="end" @ionChange="dados.bool_tratamento_eplepsia= !(Number(dados.bool_tratamento_eplepsia))" :checked="dados.bool_tratamento_eplepsia == 1"></ion-toggle>
+            <ion-toggle color="palete-secundary" slot="end" @ionChange="dados.bool_tratamento_eplepsia= !(Number(dados.bool_tratamento_eplepsia))" :checked="dados.bool_tratamento_eplepsia == 1"></ion-toggle>
         </ion-item>
 
 
@@ -309,12 +309,12 @@
 
         <ion-item>
             <ion-label>Possui?</ion-label>
-            <ion-toggle slot="end" @ionChange="dados.bool_hemofilia= !(Number(dados.bool_hemofilia))" :checked="dados.bool_hemofilia == 1"></ion-toggle>
+            <ion-toggle color="palete-secundary" slot="end" @ionChange="dados.bool_hemofilia= !(Number(dados.bool_hemofilia))" :checked="dados.bool_hemofilia == 1"></ion-toggle>
         </ion-item>
 
         <ion-item  v-if="Number(dados.bool_hemofilia)">
             <ion-label>Em Tratamento?</ion-label>
-            <ion-toggle slot="end" @ionChange="dados.bool_tratamento_hemofilia= !(Number(dados.bool_tratamento_hemofilia))" :checked="dados.bool_tratamento_hemofilia == 1"></ion-toggle>
+            <ion-toggle color="palete-secundary" slot="end" @ionChange="dados.bool_tratamento_hemofilia= !(Number(dados.bool_tratamento_hemofilia))" :checked="dados.bool_tratamento_hemofilia == 1"></ion-toggle>
         </ion-item>
 
       <ion-item-divider>
@@ -325,12 +325,12 @@
 
         <ion-item>
             <ion-label>Possui?</ion-label>
-            <ion-toggle slot="end" @ionChange="dados.bool_asmatico= !(Number(dados.bool_asmatico))" :checked="dados.bool_asmatico == 1"></ion-toggle>
+            <ion-toggle color="palete-secundary" slot="end" @ionChange="dados.bool_asmatico= !(Number(dados.bool_asmatico))" :checked="dados.bool_asmatico == 1"></ion-toggle>
         </ion-item>
 
         <ion-item v-if="Number(dados.bool_asmatico)">
             <ion-label>Em Tratamento?</ion-label>
-            <ion-toggle slot="end" @ionChange="dados.bool_tratamento_asmatico= !(Number(dados.bool_tratamento_asmatico))" :checked="dados.bool_tratamento_asmatico == 1"></ion-toggle>
+            <ion-toggle color="palete-secundary" slot="end" @ionChange="dados.bool_tratamento_asmatico= !(Number(dados.bool_tratamento_asmatico))" :checked="dados.bool_tratamento_asmatico == 1"></ion-toggle>
         </ion-item>
 
         <ion-item-divider>
@@ -341,12 +341,12 @@
 
         <ion-item>
             <ion-label>Possui?</ion-label>
-            <ion-toggle slot="end" @ionChange="dados.bool_diabetes= !(Number(dados.bool_diabetes))" :checked="dados.bool_diabetes == 1"></ion-toggle>
+            <ion-toggle color="palete-secundary" slot="end" @ionChange="dados.bool_diabetes= !(Number(dados.bool_diabetes))" :checked="dados.bool_diabetes == 1"></ion-toggle>
         </ion-item>
 
         <ion-item v-if="Number(dados.bool_diabetes)">
             <ion-label>Toma insulina?</ion-label>
-            <ion-toggle slot="end" @ionChange="dados.bool_tratamento_diabetes= !(Number(dados.bool_tratamento_diabetes))" :checked="dados.bool_tratamento_diabetes == 1"></ion-toggle>
+            <ion-toggle color="palete-secundary" slot="end" @ionChange="dados.bool_tratamento_diabetes= !(Number(dados.bool_tratamento_diabetes))" :checked="dados.bool_tratamento_diabetes == 1"></ion-toggle>
         </ion-item>
 
         <ion-item-divider>
@@ -357,17 +357,17 @@
 
         <ion-item>
             <ion-label>Visual</ion-label>
-            <ion-toggle slot="end" @ionChange="dados.bool_deficiencia_visual= !(Number(dados.bool_deficiencia_visual))" :checked="dados.bool_deficiencia_visual == 1"></ion-toggle>
+            <ion-toggle color="palete-secundary" slot="end" @ionChange="dados.bool_deficiencia_visual= !(Number(dados.bool_deficiencia_visual))" :checked="dados.bool_deficiencia_visual == 1"></ion-toggle>
         </ion-item>
 
         <ion-item>
             <ion-label>Auditiva</ion-label>
-            <ion-toggle slot="end" @ionChange="dados.bool_deficiencia_auditiva= !(Number(dados.bool_deficiencia_auditiva))" :checked="dados.bool_deficiencia_auditiva == 1"></ion-toggle>
+            <ion-toggle color="palete-secundary" slot="end" @ionChange="dados.bool_deficiencia_auditiva= !(Number(dados.bool_deficiencia_auditiva))" :checked="dados.bool_deficiencia_auditiva == 1"></ion-toggle>
         </ion-item>
 
         <ion-item>
             <ion-label>Física</ion-label>
-            <ion-toggle slot="end" @ionChange="dados.bool_deficiencia_fisica= !(Number(dados.bool_deficiencia_fisica))" :checked="dados.bool_deficiencia_fisica == 1"></ion-toggle>
+            <ion-toggle color="palete-secundary" slot="end" @ionChange="dados.bool_deficiencia_fisica= !(Number(dados.bool_deficiencia_fisica))" :checked="dados.bool_deficiencia_fisica == 1"></ion-toggle>
         </ion-item>
 
         <ion-item>
@@ -385,7 +385,7 @@
           <ion-textarea @ionChange="dados.informacoes_adicionais= $event.target.value" :value="dados.informacoes_adicionais" placeholder="Adicionar.."></ion-textarea>
         </ion-item>
 
-        <ion-button @click="saveDados()" expand="full" fill="outline">Salvar</ion-button>
+        <ion-button @click="saveDados()" expand="full" fill="outline" color="palete-primary">Salvar</ion-button>
 
     </ion-list>
   </ion-content>
