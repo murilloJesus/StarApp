@@ -22,9 +22,9 @@
   </IonApp>
 </template>
 
-<script lang="ts">
+<script >
 import { IonApp, IonContent, IonIcon, IonItem, IonLabel, IonList, IonListHeader, IonMenu, IonMenuToggle, IonNote, IonRouterOutlet, IonSplitPane } from '@ionic/vue';
-import { defineComponent, ref } from 'vue';
+import { computed, defineComponent, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { logOut, logOutOutline, homeOutline, homeSharp, bookOutline, bookSharp, bookmarkOutline, bookmarkSharp, newspaperOutline, newspaperSharp, mailOutline, mailSharp, personOutline, personSharp, trashOutline, trashSharp, warningOutline, warningSharp } from 'ionicons/icons';
 import { mapGetters } from 'vuex';
@@ -46,7 +46,20 @@ export default defineComponent({
     IonSplitPane,
   },
   setup() {
-    const selectedIndex = ref(0);
+    const selectedIndex = computed(() => {
+    const route = useRoute();
+
+      const pages = {
+        Home: 0,
+        Mensagem: 1,
+        verMensagem: 1,
+        Cadastro: 2,
+        Boletim: 3,
+        Diario: 4
+      }
+
+      return pages[route.name]
+    })
     const appPages = [
       {
         title: 'Home',
@@ -90,9 +103,7 @@ export default defineComponent({
     if (path !== undefined) {
       selectedIndex.value = appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
     }
-    
-    const route = useRoute();
-    
+        
     return { 
       selectedIndex,
       appPages, 
@@ -110,7 +121,6 @@ export default defineComponent({
       trashSharp, 
       warningOutline, 
       warningSharp,
-      isSelected: (url: string) => url === route.path ? 'selected' : ''
     }
   },
   computed: {

@@ -32,27 +32,27 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/mensagem',
-    name: 'mensagem',
+    name: 'Mensagem',
     component: Mensagem
   },
   {
     path: '/cadastro',
-    name: 'cadastro',
+    name: 'Cadastro',
     component: Cadastro,
   },
   {
     path: '/mensagem/ver/:id',
-    name: 'ver mensagem',
+    name: 'verMensagem',
     component: verMensagem
   },
   {
     path: '/boletim',
-    name: 'Lista Boletins',
+    name: 'Boletim',
     component: ListaBoletim
   },
   {
     path: '/diario',
-    name: 'Diarios de Classe',
+    name: 'Diario',
     component: ListaDiarioClasse
   },
   {

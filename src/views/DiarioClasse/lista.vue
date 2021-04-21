@@ -11,13 +11,7 @@
     
     <ion-content :fullscreen="true">
       <ion-list v-if="lista">
-            <ion-item v-for="(item, index) in lista" :key="index" @click="openDiario(item.id)">
-                <ion-label>
-                    <p>{{item.nome_turmas}}</p>
-                    <small>{{item.nome_disc}}</small><br>
-                    <small>{{item.dia_semana}}</small>
-                </ion-label>
-            </ion-item>
+            <group v-on:openDiario="openDiario" v-for="(item, index) in listaAgrupada" :key="index" :diarios="item" />
         </ion-list>
         <skeleton-text v-if="!lista">
 
@@ -26,13 +20,14 @@
   </ion-page>
 </template>
 
-<script lang="ts">
+<script >
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, modalController  } from '@ionic/vue';
 import  skeletonText  from './../common/skeletonText.vue'
 import  diario from './diario.vue'
 
 import { defineComponent } from 'vue';
 import { mapActions } from 'vuex';
+import Group from './group.vue';
 
 export default defineComponent({
   name: 'Lista Boletim',
@@ -51,15 +46,25 @@ export default defineComponent({
     IonTitle,
     IonToolbar,
     skeletonText,
+    Group,
+  },
+  computed:{
+    listaAgrupada() {
+      return this.lista.reduce((newLista, index) => {
+
+            newLista[index.data] = [...newLista[index.data] || [], index];
+            return newLista;
+            }, {});
+    }
   },
   created() {
-        this.load().then((res: any) => {
+        this.load().then((res) => {
           this.lista = res.data
         })        
     },
     methods: {
       ...mapActions('diarioClasse', ['load']),
-      async openDiario(id: any) {
+      async openDiario(id) {
             this.modal = await modalController
                 .create({
                 component: diario,

@@ -5,7 +5,7 @@
           <h5>
             Cadastro Responsavel
           </h5>
-          </ion-title>
+        </ion-title>
         <ion-icon @click="closeMe" color="palete-secundary" slot="end" size="large" name="close" />
       </ion-toolbar>
   </ion-header>
