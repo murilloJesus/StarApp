@@ -74,13 +74,17 @@ export default {
 <style scoped>
   ion-card{
     border: 1px solid var(--ion-color-palete-secundary);
-    height: 120px; 
-    width: 120px;
+    height: 100%; 
+    width: 90%;
     margin: auto;
   }
 
   ion-grid {
     height: 480px;
+  }
+
+  ion-row {
+    margin: 10px 0px;
   }
 
   h3 {

@@ -6,10 +6,6 @@
             <ion-card>
                 <ion-card-content>
                     <ion-item>
-                        <ion-label position="floating">ID Escolar</ion-label>
-                        <ion-input v-model="form.id" id=id></ion-input>
-                    </ion-item>
-                    <ion-item>
                         <ion-label position="floating">Login</ion-label>
                         <ion-input v-model="form.login" id=login></ion-input>
                     </ion-item>
@@ -70,7 +66,7 @@ export default  {
   data() {
     return {
       form: {
-        id: "",
+        id: 16,
         login: "",
         senha: ""
       }

@@ -47,20 +47,6 @@
   </div>
 </template>
 
-<style>
-div {
-    width: 100%;
-}
-  /* Custom Skeleton Line Height and Margin */
-  .custom-skeleton ion-skeleton-text {
-    line-height: 13px;
-  }
-
-  .custom-skeleton ion-skeleton-text:last-child {
-    margin-bottom: 5px;
-  }
-</style>
-
 <script>
 import { 
   IonItem, 
@@ -78,3 +64,17 @@ export default defineComponent({
   }
 });
 </script>
+
+<style>
+div {
+    width: 100%;
+}
+  /* Custom Skeleton Line Height and Margin */
+  .custom-skeleton ion-skeleton-text {
+    line-height: 13px;
+  }
+
+  .custom-skeleton ion-skeleton-text:last-child {
+    margin-bottom: 5px;
+  }
+</style>

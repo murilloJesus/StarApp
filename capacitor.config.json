@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "star0.1",
+  "appId": "murillosjesus.starapp",
+  "appName": "starapp",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "dist",

@@ -11,47 +11,34 @@
       </ion-toolbar>
     </ion-header>
     
-    <ion-content :fullscreen="true">
+    <ion-content ref="content" :fullscreen="true">
       <ion-list>
         <texto :texto="txt.texto" v-for="(txt, index) in messages.texto" :key=index />
         <div style="height: 120px"></div>
       </ion-list>
-      <div class="responder">
-        <ion-item>
-          <ion-textarea placeholder="Responder... " v-model="texto"></ion-textarea>
-        </ion-item>
-        <ion-button expand="full" @click="enviarResposta" color="palete-primary">Enviar</ion-button>
-      </div>
+      <skeleton-text v-if="!messages"></skeleton-text>
     </ion-content>
+    <div class="responder">
+      <ion-item>
+        <ion-textarea placeholder="Responder... " v-model="texto"></ion-textarea>
+      </ion-item>
+      <ion-button expand="full" @click="enviarResposta" color="palete-primary">Enviar</ion-button>
+    </div>
   </ion-page>
 </template>
 
 <script >
-import { IonButtons, IonContent, IonHeader, IonIcon, IonPage, IonTitle, IonToolbar, IonItem, IonTextarea, IonButton, alertController } from '@ionic/vue';
+import { IonButtons, IonContent, IonHeader, IonIcon, IonPage, IonTitle, IonToolbar, IonItem, IonTextarea, IonButton, IonList, alertController } from '@ionic/vue';
 import { useRouter } from 'vue-router';
 import { mapActions } from 'vuex';
 import { arrowBack } from 'ionicons/icons';
 import texto from './texto'
-
-// import { store } from '@/store';
+import skeletonText from './../common/skeletonText.vue';
+import { ref } from 'vue';
 
 export default {
   name: 'Ver Mensagem',
-  data() {
-    return {
-      texto: ""
-    }
-  },
-  setup() {
-    const router = useRouter();
-    const messages = []
-    return {
-      messages,
-      router,
-      arrowBack
-    };
-  },
-  components: {
+    components: {
     IonButtons,
     IonContent,
     IonHeader,
@@ -62,16 +49,42 @@ export default {
     IonItem,
     IonTextarea,
     IonButton,
-    texto
+    IonList,
+    texto,
+    skeletonText
+  },
+  data() {
+    return {
+      texto: ""
+    }
+  },
+  setup() {
+    const router = useRouter();
+    const messages = ref(false)
+    const content = ref(null)
+
+    return {
+      messages,
+      router,
+      arrowBack,
+      content,
+    };
   },
   async created(){
-    await this.ver(this.$route.params.id).then( (res) => {
-        this.messages = res.data
-      } )
+    await this.getMessages()
+    this.content.$el.scrollToBottom(300)
+
   },
   methods: {
     ...mapActions("mensagem", ["responder"]),
     ...mapActions("mensagem", ["ver"]),
+    async getMessages(){
+      await this.ver(this.$route.params.id).then( (res) => {
+          this.messages = res.data
+        } );
+
+        setTimeout(this.getMessages, 18000)
+    },
     async enviarResposta(){
       const form = {
         id: this.messages.texto[this.messages.texto.length-1].id,
@@ -80,7 +93,8 @@ export default {
       }
       
       await this.responder(form).then(() => {
-        this.router.push(`/mensagem`)
+        this.getMessages();
+        this.texto = ""
       }).catch(async (err) => {
         const errorAlert = await alertController
             .create({
