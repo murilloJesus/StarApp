@@ -154,7 +154,7 @@
             <p>{{parseFloat(dados.desconto_mensalidade/100).toFixed(2)}}</p>
         </ion-item>
 
-        <ion-button @click="saveDados()" expand="full" fill="outline" color="palete-secundary">Salvar</ion-button>
+        <ion-button @click="saveDados()" expand="full" fill="outline" color="palete-success-shade">Salvar</ion-button>
 
     </ion-list>
 </template>
@@ -263,5 +263,8 @@ export default defineComponent({
     ion-button {
         margin-bottom: 50px;
     }
-    
+
+  .item.sc-ion-label-md-h, .item .sc-ion-label-md-h {
+    color: var(--ion-color-palete-success-shade);
+    }
 </style>

@@ -3,19 +3,19 @@
     <ion-header :translucent="true" >
       <ion-toolbar color="palete-primary">
         <ion-buttons slot="start">
-          <ion-menu-button color="palete-secundary"></ion-menu-button>
+          <ion-menu-button color="palete-white"></ion-menu-button>
         </ion-buttons>
         <ion-title color="palete-white"> Home </ion-title>
       </ion-toolbar>
     </ion-header>
 
     <ion-content fullscreen="true">
-       <ion-slides pager="true" :options="slideOpts">
+       <ion-slides pager="true">
         <ion-slide>
           <acesso-rapido></acesso-rapido>
         </ion-slide>
-        <ion-slide>
-          <resultado-final v-if="usuario.id" :id="usuario.id" />
+        <ion-slide >
+            <resultado-final v-if="user.id" />
         </ion-slide>
       </ion-slides>
         
@@ -34,7 +34,9 @@
     IonMenuButton,
     IonPage,
     IonTitle,
-    IonToolbar
+    IonToolbar,
+    IonSlide,
+    IonSlides
   } from '@ionic/vue';
 
   import {
@@ -44,9 +46,23 @@
   
   import resultadoFinal from './Boletim/resultado_final.vue'
   import AcessoRapido from './acessoRapido.vue';
+  import { mapGetters } from 'vuex';
+
+  import { Ref, ref } from '@vue/runtime-core';
 
   export default {
     name: 'Folder',
+    setup(){
+
+        const nots: Ref<any[]> = ref([])
+
+        const tokenI = ref("")
+
+        return {
+          nots,
+          tokenI
+        }
+    },
     components: {
       IonButtons,
       IonContent,
@@ -55,16 +71,15 @@
       IonPage,
       IonTitle,
       IonToolbar,
+      IonSlide,
+      IonSlides,
       resultadoFinal,
       AcessoRapido
     },
-    data() {
-      return {
-        usuario: {}
-      }
+    computed: {
+      ...mapGetters("home", ["user"])
     },
     methods: {
-      
       // ...mapActions("auth", ["signOut"]),
       ...mapActions("home", ["loadHome"]),
       async handleSignOut() {

@@ -27,8 +27,9 @@ const ApiService = {
         axios.defaults.headers.common["Content-Type"] = "application/x-www-form-urlencoded";
     },
 
-    get(resource: string) {
-        return axios.get(resource);
+    get(resource: string, params: any = false) {
+        if(params) return axios.get(resource, { params: params})
+        return axios.get(resource)
     },
 
     async post(resource: string, data: any) {

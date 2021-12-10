@@ -1,9 +1,9 @@
 <template>
   <ion-page>
     <ion-header :translucent="true" >
-      <ion-toolbar color="palete-primary">
+      <ion-toolbar color="palete-success">
         <ion-buttons slot="start">
-          <ion-menu-button color="palete-secundary"></ion-menu-button>
+          <ion-menu-button color="palete-white"></ion-menu-button>
         </ion-buttons>
         <ion-title color="palete-white">{{ nomeTab }}</ion-title>
       </ion-toolbar>
@@ -18,26 +18,26 @@
     </ion-content>
 
     <ion-tabs @ionTabsWillChange="beforeTabChange"  @ionTabsDidChange="afterTabChange">
-      <ion-tab-bar slot="bottom" color="palete-primary">
+      <ion-tab-bar slot="bottom" color="palete-success">
 
         <ion-tab-button @click="addPage('|aluno')" >
-          <ion-icon :icon="personCircle"></ion-icon>
-          <ion-label>Aluno</ion-label>
+          <ion-icon color="palete-white" :icon="personCircle"></ion-icon>
+          <ion-label color="palete-white" >Aluno</ion-label>
         </ion-tab-button>
 
         <ion-tab-button @click="addPage('|listaResponsaveis')">
-          <ion-icon :icon="list"></ion-icon>
-          <ion-label>Responsáveis</ion-label>
+          <ion-icon color="palete-white"  :icon="list"></ion-icon>
+          <ion-label color="palete-white" >Responsáveis</ion-label>
         </ion-tab-button>
 
         <ion-tab-button @click="addPage('|documentos')">
-          <ion-icon :icon="document"></ion-icon>
-          <ion-label>Documentos</ion-label>
+          <ion-icon color="palete-white"  :icon="document"></ion-icon>
+          <ion-label color="palete-white" >Documentos</ion-label>
         </ion-tab-button>
 
         <ion-tab-button @click="addPage('|complementares')">
-          <ion-icon :icon="medical"></ion-icon>
-          <ion-label>Fichas</ion-label>
+          <ion-icon color="palete-white"  :icon="medical"></ion-icon>
+          <ion-label color="palete-white" >Fichas</ion-label>
         </ion-tab-button>
 
       </ion-tab-bar>

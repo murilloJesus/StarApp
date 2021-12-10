@@ -2,8 +2,8 @@
   <ion-card>
     <ion-card-header @click="toogle()">
       <ion-card-subtitle>{{diarios[0].dia_semana}}</ion-card-subtitle>
-      <ion-icon size="large" color="palete-primary" v-if="isVisible" :icon="closeCircle"></ion-icon>
-      <ion-icon size="large" color="palete-primary" v-else :icon="addCircle"></ion-icon>
+      <ion-icon size="large" color="palete-warning" v-if="isVisible" :icon="closeCircle"></ion-icon>
+      <ion-icon size="large" color="palete-warning" v-else :icon="addCircle"></ion-icon>
     </ion-card-header>
 
     <ion-card-content v-if="isVisible">

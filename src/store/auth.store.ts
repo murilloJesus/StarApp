@@ -43,6 +43,14 @@ const actions = {
         return AuthService.isSigned();
     },
 
+    hasSchoolId(){
+        return localStorage.getItem('school_id')
+    },
+
+    async getSchoolList(){
+        return AuthService.getSchoolList()
+    },
+
     setAuthenticatingStatus(context: any, status: any) {
         context.commit("setAuthenticatingStatus", status);
     },

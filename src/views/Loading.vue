@@ -32,16 +32,19 @@ export default {
     }
   },
   created(){
-
     setTimeout(() => {
-      this.isSigned().then((res) => {
-          if(res) this.router.push('/home')
-          else this.router.push('/login')
-      })      
+      // if( this.hasSchoolId() )
+      //   this.router.push('/escola')
+      // else 
+        this.isSigned().then((res) => {
+            if(res) this.router.push('/home')
+            else this.router.push('/login')
+        })      
     }, 1000)
   },
   methods: {
     ...mapActions("auth", ["isSigned"]),
+    ...mapActions("auth", ["hasSchoolId"]),
   }
 }
 </script>

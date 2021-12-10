@@ -1,12 +1,12 @@
 <template>
     <ion-header>
-      <ion-toolbar color="palete-primary">
+      <ion-toolbar color="palete-warning">
         <ion-title slot="start" color="palete-white">
           <h5>
             Diario de Classe
           </h5>
           </ion-title>
-        <ion-icon @click="closeMe" color="palete-secundary" slot="end" size="large" name="close" />
+        <ion-icon @click="closeMe" color="palete-white" slot="end" size="large" name="close" />
       </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
@@ -49,6 +49,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+  .item.sc-ion-label-md-h, .item .sc-ion-label-md-h {
+    color: var(--ion-color-palete-success-shade);
+  }
 </style>

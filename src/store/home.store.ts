@@ -1,8 +1,13 @@
 import { HomeService, ResponseError } from "@/services/home.service";
 
 const state = {
-    id: -1,
+    id: false,
+    parentId: -1,
     nome: "",
+    tipo: "",
+    selAluno: {},
+    lisAlunos: [],
+    //REST control
     responseData: "",
     responseErrorCode: 0,
     responseError: "",
@@ -17,6 +22,15 @@ const getters = {
     },
     responseData: (state: { responseData: any }) => {
         return state.responseData;
+    },
+    user: (state: any) => {
+        return {
+            id: state.id,
+            nome: state.nome,
+            tipo: state.tipo,
+            selAluno: state.selAluno, 
+            lisAlunos: state.lisAlunos
+        }
     },
     nome: (state: { nome: any }) => {
         return state.nome;
@@ -42,6 +56,9 @@ const actions = {
             }
             return e.message;
         }
+    },
+    async setAluno(context: any, id: number){
+        return context.commit("setAluno", id)
     }
 };
 
@@ -53,14 +70,20 @@ const mutations = {
         state.responseError = "";
         state.responseErrorCode = 0;
     },
-    dataSuccess(state: { 
-        responseData: string;
-        nome: string; 
-        id: number; 
-        }, payload: any) {
+    dataSuccess( state: any , payload: any) {
         state.responseData = payload;
         state.nome = payload.data.nome;
-        state.id = payload.data.id;
+        state.email =  payload.data.email;
+        state.tipo = payload.data.tipo;
+
+        if( state.tipo === 'Responsável'){
+            state.selAluno = payload.data.alunos[0];
+            state.lisAlunos = payload.data.alunos;
+            state.id = state.selAluno.id;
+            state.parentId = payload.data.id;
+        }else{
+            state.id = payload.data.id
+        }
     },
     dataError(state: {
         responseError: any;
@@ -68,6 +91,11 @@ const mutations = {
         }, {errorCode, errorMessage}: any) {
         state.responseError = errorMessage;
         state.responseErrorCode = errorCode;
+    },
+    setAluno(state: any, id: any){
+        state.selAluno = state.lisAlunos.find((element: any) => element.id === id)
+        state.id = state.selAluno.id
+        return true
     }
 }
 

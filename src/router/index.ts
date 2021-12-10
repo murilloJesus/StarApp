@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
 import Home from '.././views/Home.vue'
 import Login from '.././views/Login.vue'
+import School from '.././views/School.vue'
 import Loading from '.././views/Loading.vue'
 //MENSAGEM
 import Mensagem from '.././views/Mensagem/index.vue'
@@ -13,6 +14,8 @@ import ListaBoletim from '.././views/Boletim/lista.vue'
 //DIARIO
 import ListaDiarioClasse from '.././views/DiarioClasse/lista.vue'
 import { UserService } from '@/services/user.service';
+//FINANCEIRO
+import Financeiro from '.././views/Financeiro/index.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -24,6 +27,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/escola',
+    name: 'Escola',
+    component: School
   },
   {
     path: '/home',
@@ -54,6 +62,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/diario',
     name: 'Diario',
     component: ListaDiarioClasse
+  },
+  {
+    path: '/financeiro',
+    name: 'Financeiro',
+    component: Financeiro
   },
   {
     path: '/logout',

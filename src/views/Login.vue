@@ -6,6 +6,12 @@
             <ion-card>
                 <ion-card-content>
                     <ion-item>
+                      <ion-label>Escola</ion-label>
+                      <ion-select placeholder="Selecione" interface="action-sheet" @ionChange="form.id= $event.target.value" :value="form.id" ok-text="Ok" cancel-text="Cancelar"> 
+                          <ion-select-option :value="escola.id" v-for="escola in escolas" :key="escola.id">{{escola.nome}}</ion-select-option>
+                      </ion-select>
+                    </ion-item>
+                    <ion-item>
                         <ion-label position="floating">Login</ion-label>
                         <ion-input v-model="form.login" id=login></ion-input>
                     </ion-item>
@@ -66,10 +72,11 @@ export default  {
   data() {
     return {
       form: {
-        id: 16,
+        id: 0,
         login: "",
         senha: ""
-      }
+      },
+      escolas: []
     };
   },
   computed: {
@@ -79,8 +86,11 @@ export default  {
       "authenticationErrorCode"
     ])
   },
+  created(){
+    this.getEscolas()
+  },
   methods: {
-    ...mapActions("auth", ["signIn"]),
+    ...mapActions("auth", ["signIn", "getSchoolList"]),
     async handleLogin() {
       await this.signIn(this.form).then(() => {
         this.form.id = ""
@@ -96,6 +106,11 @@ export default  {
               buttons: ['OK'],
             });
         await errorAlert.present()
+      })
+    },
+    async getEscolas(){
+      await this.getSchoolList().then(data => {
+        this.escolas = data.data
       })
     }
   }   

@@ -1,9 +1,9 @@
 <template>
   <ion-page>
     <ion-header :translucent="true">
-      <ion-toolbar color="palete-primary">
+      <ion-toolbar color="palete-message">
         <ion-buttons slot="start">
-          <ion-button @click="back()" color="palete-secundary">
+          <ion-button @click="back()" color="palete-white">
             <ion-icon :icon="arrowBack"></ion-icon>
           </ion-button>
         </ion-buttons>
@@ -13,7 +13,7 @@
     
     <ion-content ref="content" :fullscreen="true">
       <ion-list>
-        <texto :texto="txt.texto" v-for="(txt, index) in messages.texto" :key=index />
+        <texto :msg="msg" v-for="(msg, index) in messages.texto" :key=index />
         <div style="height: 120px"></div>
       </ion-list>
       <skeleton-text v-if="!messages"></skeleton-text>
@@ -22,7 +22,7 @@
       <ion-item>
         <ion-textarea placeholder="Responder... " v-model="texto"></ion-textarea>
       </ion-item>
-      <ion-button expand="full" @click="enviarResposta" color="palete-primary">Enviar</ion-button>
+      <ion-button expand="full" @click="enviarResposta" color="palete-message">Enviar</ion-button>
     </div>
   </ion-page>
 </template>
@@ -83,7 +83,7 @@ export default {
           this.messages = res.data
         } );
 
-        setTimeout(this.getMessages, 18000)
+        // setTimeout(this.getMessages, 18000)
     },
     async enviarResposta(){
       const form = {

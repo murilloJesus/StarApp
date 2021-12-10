@@ -41,7 +41,7 @@ const AuthService = {
         }
     }, 
 
-    isSigned(){
+    isSigned: async function(){
         const user = UserService.getUser()
 
         if(user.id){
@@ -57,6 +57,14 @@ const AuthService = {
 
         return false
         
+    },
+
+    getSchoolList(){
+        try {
+            return ApiService.get('/api/escolas/lista.php')
+        } catch (error) {
+           this.catchError(error)
+       }
     },
 
     catchError: function(error: any) {

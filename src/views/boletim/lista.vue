@@ -1,9 +1,9 @@
 <template>
   <ion-page>
     <ion-header :translucent="true" >
-      <ion-toolbar color="palete-primary">
+      <ion-toolbar color="palete-danger">
         <ion-buttons slot="start">
-          <ion-menu-button color="palete-secundary"></ion-menu-button>
+          <ion-menu-button color="palete-white"></ion-menu-button>
         </ion-buttons>
         <ion-title color="palete-white"> Boletim </ion-title>
       </ion-toolbar>
@@ -11,7 +11,7 @@
     
     <ion-content :fullscreen="true">
       <ion-list v-if="lista">
-            <ion-item v-for="(item, index) in lista" :key="index" @click="openBoletim(item.id)">
+            <ion-item v-for="(item, index) in lista" :key="index" @click="openBoletim(item.id, item.nome)">
                 <ion-label>
                     <h2>
                       {{item.nome}}
@@ -60,13 +60,14 @@ export default defineComponent({
     },
     methods: {
       ...mapActions('boletim', ['load']),
-      async openBoletim(id: any) {
+      async openBoletim(id: any, name: string) {
             this.modal = await modalController
                 .create({
                 component: boletim,
                 cssClass: 'my-custom-class',
                 componentProps: {
                         id: id,
+                        name: name,
                         closeMe: this.closeModal
                     },
                 })
@@ -80,8 +81,11 @@ export default defineComponent({
 </script>
 
 
-<style>
+<style scoped>
 .my-custom-class {
   --width: 50000px;
 }
+.item.sc-ion-label-md-h, .item .sc-ion-label-md-h {
+        color: var(--ion-color-palete-danger-shade);
+    }
 </style>

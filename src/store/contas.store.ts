@@ -1,4 +1,4 @@
-import { BoletimService, ResponseError } from "@/services/boletim.service";
+import { contaService, ResponseError } from "@/services/conta.service";
 
 const state = {
     lista: [],
@@ -23,10 +23,10 @@ const getters = {
 };
 
 const actions = {
-    async load(context: any) {
+    async load(context: any, params: any) {
         context.commit("dataRequest");
         try {
-            const resp = await BoletimService.listar(context.rootState.home.id);
+            const resp = await contaService.listar(context.rootState.home.id, params);
             context.commit("dataSuccess", resp);
             return resp;
         } catch (e) {
@@ -39,10 +39,10 @@ const actions = {
             return e.message;
         }
     },
-    async ver(context: any, id: number){
+    async get(context: any, id: number){
         context.commit("dataRequest");
         try {
-            const resp = await BoletimService.ver(id);
+            const resp = await contaService.get(id);
             context.commit("dataSuccess", resp);
             return resp;
         } catch (e) {
@@ -55,10 +55,10 @@ const actions = {
             return e.message;
         }
     },
-    async resultadoFinal(context: any){
+    async anos(context: any){
         context.commit("dataRequest");
         try {
-            const resp = await BoletimService.resultadoFinal(context.rootState.home.id);
+            const resp = await contaService.anos(context.rootState.home.id);
             context.commit("dataSuccess", resp);
             return resp;
         } catch (e) {
@@ -97,7 +97,7 @@ const mutations = {
     }
 }
 
-export const boletim = {
+export const contas = {
     namespaced: true,
     state,
     getters,

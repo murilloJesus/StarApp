@@ -10,6 +10,7 @@ import { documentos } from "./documentos.store"
 import { fichas } from "./fichas.store"
 import { boletim } from "./boletim.store"
 import { diarioClasse } from "./diarioClasse.store"
+import { contas } from "./contas.store"
 
 export const store = createStore({
     state: {},
@@ -26,6 +27,7 @@ export const store = createStore({
         documentos,
         fichas,
         boletim,
-        diarioClasse
+        diarioClasse,
+        contas
     },
 })

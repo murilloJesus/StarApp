@@ -88,8 +88,11 @@ export default defineComponent({
 })
 </script>
 
-<style>
+<style scoped>
 .my-custom-class {
   --width: 50000px;
+}
+.item.sc-ion-label-md-h, .item .sc-ion-label-md-h {
+    color: var(--ion-color-palete-success-shade);
 }
 </style>

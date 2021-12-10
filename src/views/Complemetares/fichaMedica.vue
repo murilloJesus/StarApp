@@ -1,12 +1,12 @@
 <template>
   <ion-header>
-      <ion-toolbar color="palete-primary">
+      <ion-toolbar color="palete-success">
         <ion-title slot="start" color="palete-white">
           <h5>
             Ficha Medica
           </h5>
           </ion-title>
-        <ion-icon @click="closeMe" slot="end" size="large" name="close" color="palete-secundary" />
+        <ion-icon @click="closeMe" slot="end" size="large" name="close" color="palete-white" />
       </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
@@ -385,7 +385,7 @@
           <ion-textarea @ionChange="dados.informacoes_adicionais= $event.target.value" :value="dados.informacoes_adicionais" placeholder="Adicionar.."></ion-textarea>
         </ion-item>
 
-        <ion-button @click="saveDados()" expand="full" fill="outline" color="palete-primary">Salvar</ion-button>
+        <ion-button @click="saveDados()" expand="full" fill="outline" color="palete-success-shade">Salvar</ion-button>
 
     </ion-list>
   </ion-content>
@@ -436,3 +436,9 @@ export default defineComponent({
   }  
 })
 </script>
+
+<style scoped>
+    .item.sc-ion-label-md-h, .item .sc-ion-label-md-h {
+        color: var(--ion-color-palete-success-shade);
+    }
+</style>

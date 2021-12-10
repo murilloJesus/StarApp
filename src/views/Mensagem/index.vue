@@ -1,9 +1,9 @@
 <template>
   <ion-page>
     <ion-header :translucent="true" >
-      <ion-toolbar color="palete-primary">
+      <ion-toolbar color="palete-message">
         <ion-buttons slot="start">
-          <ion-menu-button color="palete-secundary"></ion-menu-button>
+          <ion-menu-button color="palete-white"></ion-menu-button>
         </ion-buttons>
         <ion-title color="palete-white"> Mensagens </ion-title>
       </ion-toolbar>
@@ -18,7 +18,7 @@
       </ion-header>
         <ion-list v-if="lista">
             <ion-item @click="presentActionSheet(item.id)" v-for="(item, index) in lista" :key=index>
-                <ion-label color="palete-secundary">
+                <ion-label color="palete-message">
                     <p >{{item.nome}}</p>
                     <h4>{{item.titulo}}</h4>
                     <small>{{item.dia_semana}}</small>
@@ -103,4 +103,8 @@ export default {
 #container a {
   text-decoration: none;
 }
+
+.item.sc-ion-label-md-h, .item .sc-ion-label-md-h {
+    color: var(--ion-color-palete-message-shade);
+    }
 </style>

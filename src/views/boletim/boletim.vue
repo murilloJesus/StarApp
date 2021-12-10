@@ -1,12 +1,12 @@
 <template>
     <ion-header>
-      <ion-toolbar color="palete-primary">
+      <ion-toolbar color="palete-danger">
         <ion-title slot="start" color="palete-white">
           <h5>
-            Boletim
+            Boletim - {{name}}
           </h5>
           </ion-title>
-        <ion-icon @click="closeMe" color="palete-secundary" slot="end" size="large" name="close" />
+        <ion-icon @click="closeMe" color="palete-white" slot="end" size="large" name="close" />
       </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
@@ -64,11 +64,14 @@ export default {
   },
   props: {
     id: { type: Number, default: 0 },
+    name: {type: String, defaul: ''},
     closeMe: { type: Function, default: () => { return 0} },
   },
   created() {
     this.ver(this.id).then((res) => {
         this.boletim = res.data
+        console.log(res.data);
+        
     })
   },
   methods: {
@@ -77,6 +80,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+  .item.sc-ion-label-md-h, .item .sc-ion-label-md-h {
+        color: var(--ion-color-palete-success-shade);
+    }
 </style>

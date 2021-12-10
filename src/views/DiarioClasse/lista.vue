@@ -1,9 +1,9 @@
 <template>
   <ion-page>
     <ion-header :translucent="true" >
-      <ion-toolbar color="palete-primary">
+      <ion-toolbar color="palete-warning">
         <ion-buttons slot="start">
-          <ion-menu-button color="palete-secundary"></ion-menu-button>
+          <ion-menu-button color="palete-white"></ion-menu-button>
         </ion-buttons>
         <ion-title color="palete-white"> Diario de Classe </ion-title>
       </ion-toolbar>
@@ -84,8 +84,11 @@ export default defineComponent({
 </script>
 
 
-<style>
+<style scoped>
 .my-custom-class {
   --width: 50000px;
 }
+.item.sc-ion-label-md-h, .item .sc-ion-label-md-h {
+        color: var(--ion-color-palete-success-shade);
+    }
 </style>
